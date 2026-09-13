@@ -1,0 +1,117 @@
+/* The page red is the cover's red. assets/cover.png, assets/publisher.png and
+   the theme-color in index.html all carry #DF2E2A - change one, change all
+   four. White text on it is 4.6:1; the original #EF3F35 was only 3.9:1. */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  background: #df2e2a;
+  color-scheme: only light; /* stop Android auto-dark inverting the red */
+  -webkit-text-size-adjust: 100%; /* stop iOS inflating text on rotate */
+}
+
+body {
+  max-width: 42rem;
+  margin: 0 auto;
+  padding: 0 1.25rem 4rem;
+  color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(1rem, 0.94rem + 0.3vw, 1.125rem);
+  line-height: 1.65;
+  overflow-wrap: break-word; /* a long word must not widen the page */
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* the address sits in running text, so it must look like a link unprompted */
+a[href^="mailto:"] {
+  text-decoration: underline;
+}
+
+:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 4px;
+}
+
+p {
+  margin: 0 0 1rem;
+}
+
+h1 {
+  margin: 0; /* holds the cover, which is the title */
+}
+
+h2 {
+  margin: 0 0 1rem;
+  font-size: 1.5rem;
+  line-height: 1.15;
+}
+
+.byline {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.9rem;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.book-link {
+  margin: 1.25rem 0 3rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.book-link img {
+  margin: 0.75rem auto 0; /* natural 274px wide, centred */
+}
+
+section {
+  display: flow-root; /* contain the floated portrait */
+}
+
+section + section {
+  margin-top: 2.75rem;
+}
+
+.portrait {
+  float: right;
+  width: min(42%, 18.75rem);
+  margin: 0.35rem 0 1rem 1.75rem;
+}
+
+/* narrower than this and the text beside the portrait is unreadable */
+@media (max-width: 36rem) {
+  .portrait {
+    float: none;
+    width: min(100%, 17rem);
+    margin: 0 auto 1.25rem;
+  }
+}
+
+/* printers drop background colours, which would leave white text on white */
+@media print {
+  html {
+    background: #fff;
+  }
+  body {
+    color: #000;
+  }
+}

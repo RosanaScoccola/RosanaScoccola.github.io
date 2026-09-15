@@ -74,13 +74,21 @@ h2 {
 }
 
 .book-link {
-  margin: 1.25rem 0 3rem;
+  margin: 1.5rem 0 0.5rem;
   font-weight: 700;
   text-align: center;
 }
 
-.book-link img {
-  margin: 0.75rem auto 0; /* natural 274px wide, centred */
+.book-extra {
+  margin: 0 0 3rem;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+/* the two PDFs are the point of the page, so they must read as links */
+.book-link a,
+.book-extra a {
+  text-decoration: underline;
 }
 
 section {
